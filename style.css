@@ -1,0 +1,14 @@
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+}
+.products > div {
+  width: 20%;
+}
+.products > div img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
