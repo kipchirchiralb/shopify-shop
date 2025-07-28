@@ -12,3 +12,8 @@
   height: 300px;
   object-fit: cover;
 }
+
+.dark {
+  background-color: #222;
+  color: aliceblue;
+}

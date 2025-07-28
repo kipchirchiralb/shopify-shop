@@ -274,7 +274,9 @@ function renderProducts(productsArray) {
         <img src="${productsArray[i].image}" alt="${productsArray[i].title}" >
         <h2>${productsArray[i].title}</h2>
         <p>Price: Ksh.${productsArray[i].price * 129}</p>
-        <p>Rating: ${productsArray[i].rating.rate} by ${productsArray[i].rating.count } clients </p>
+        <p>Rating: ${productsArray[i].rating.rate} by ${
+      productsArray[i].rating.count
+    } clients </p>
     `;
     document.getElementById("all-products").append(newProductElement);
   }
@@ -282,3 +284,17 @@ function renderProducts(productsArray) {
 
 renderProducts(products);
 
+document.querySelector("#toggle-mode").addEventListener("click", (e) => {
+  const theBtnClicked = e.target;
+  if (theBtnClicked.classList.contains("dark")) {
+    document.querySelector("body").classList.add("dark");
+    theBtnClicked.textContent = "Light Mode";
+    theBtnClicked.classList.remove("dark");
+  } else {
+    document.querySelector("body").classList.remove("dark");
+    theBtnClicked.textContent = "Dark Mode";
+    theBtnClicked.classList.add("dark");
+  }
+});
+
+// Create a mobile menu button for this web page. - show main-nav on huge screen, on small screen, show a button that on click shows the main-nav
