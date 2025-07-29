@@ -17,3 +17,53 @@
   background-color: #222;
   color: aliceblue;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+header .logo {
+  text-decoration: none;
+  color: inherit;
+  font-size: 30px;
+  font-weight: bold;
+}
+nav a {
+  text-align: none;
+  color: inherit;
+  padding: 10px 16px;
+}
+main {
+  padding: 20px 60px;
+}
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 18px;
+  }
+  .mobile-menu {
+    display: inline;
+  }
+  .main-nav {
+    display: none;
+  }
+  .main-nav.visible {
+    display: block;
+    position: fixed;
+    top: 70px;
+    left: 0px;
+    right: 0px;
+    bottom: 20px;
+    background-color: beige;
+    color: #222;
+  }
+  .main-nav.visible a {
+    display: block;
+    text-align: right;
+  }
+}

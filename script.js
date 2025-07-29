@@ -298,3 +298,10 @@ document.querySelector("#toggle-mode").addEventListener("click", (e) => {
 });
 
 // Create a mobile menu button for this web page. - show main-nav on huge screen, on small screen, show a button that on click shows the main-nav
+
+document.getElementById("mobile-menu").addEventListener("click", () => {
+  document.getElementById("main-nav").classList.toggle("visible");
+});
+
+
+// TASK - Create an image slider - use querySelectorAll to select all images with class name "slider-image" and then use a for loop to create a slider that can be navigated using the next and previous buttons
