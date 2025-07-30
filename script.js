@@ -341,3 +341,6 @@ document.querySelectorAll("input[name='range']").forEach((inputEl) => {
     renderProducts(filteredInputs);
   });
 });
+
+
+// TASK - Implement searching through the products - use the search bar to filter the products based on the search query - use the filter method to identify if the searchTerm is in the product title or description then use renderProducts functions. 
