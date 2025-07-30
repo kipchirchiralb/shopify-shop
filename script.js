@@ -268,6 +268,7 @@ const products = [
 ];
 
 function renderProducts(productsArray) {
+  document.getElementById("all-products").innerHTML = ""; // clear the section
   for (let i = 0; i < productsArray.length; i++) {
     const newProductElement = document.createElement("div");
     newProductElement.innerHTML = `
@@ -303,5 +304,40 @@ document.getElementById("mobile-menu").addEventListener("click", () => {
   document.getElementById("main-nav").classList.toggle("visible");
 });
 
-
 // TASK - Create an image slider - use querySelectorAll to select all images with class name "slider-image" and then use a for loop to create a slider that can be navigated using the next and previous buttons
+
+const sortedProductsDesc = [...products].sort(
+  (a, b) => a.rating.rate - b.rating.rate
+);
+const sortedProductsAsc = [...products].sort(
+  (a, b) => b.rating.rate - a.rating.rate
+);
+
+let countClicks = 1;
+document.getElementById("sort-by-rating").addEventListener("click", () => {
+  if (countClicks % 2 == 0) {
+    renderProducts(sortedProductsAsc);
+  } else {
+    renderProducts(sortedProductsDesc);
+  }
+  countClicks++;
+});
+
+// Calling by reference and calling by value -
+document.querySelectorAll("input[name='range']").forEach((inputEl) => {
+  inputEl.addEventListener("change", (e) => {
+    const theInputCheckedId = e.target.id;
+    console.log(theInputCheckedId);
+    let filteredInputs = []
+    if(theInputCheckedId == "range1"){
+      filteredInputs = products.filter(p =>p.price*129 < 2000)
+    }else if(theInputCheckedId == "range2"){
+      filteredInputs = products.filter(p =>p.price*129 > 2000 && p.price * 129 < 5000)
+    }else if(theInputCheckedId == "range3"){
+      filteredInputs = products.filter(p =>p.price*129 > 5000 && p.price * 129 < 8000)
+    }else{
+      filteredInputs = products.filter(p =>p.price*129 > 8000)
+    }
+    renderProducts(filteredInputs);
+  });
+});
