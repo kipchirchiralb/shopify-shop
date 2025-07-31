@@ -328,19 +328,45 @@ document.querySelectorAll("input[name='range']").forEach((inputEl) => {
   inputEl.addEventListener("change", (e) => {
     const theInputCheckedId = e.target.id;
     console.log(theInputCheckedId);
-    let filteredInputs = []
-    if(theInputCheckedId == "range1"){
-      filteredInputs = products.filter(p =>p.price*129 < 2000)
-    }else if(theInputCheckedId == "range2"){
-      filteredInputs = products.filter(p =>p.price*129 > 2000 && p.price * 129 < 5000)
-    }else if(theInputCheckedId == "range3"){
-      filteredInputs = products.filter(p =>p.price*129 > 5000 && p.price * 129 < 8000)
-    }else{
-      filteredInputs = products.filter(p =>p.price*129 > 8000)
+    let filteredInputs = [];
+    if (theInputCheckedId == "range1") {
+      filteredInputs = products.filter((p) => p.price * 129 < 2000);
+    } else if (theInputCheckedId == "range2") {
+      filteredInputs = products.filter(
+        (p) => p.price * 129 > 2000 && p.price * 129 < 5000
+      );
+    } else if (theInputCheckedId == "range3") {
+      filteredInputs = products.filter(
+        (p) => p.price * 129 > 5000 && p.price * 129 < 8000
+      );
+    } else {
+      filteredInputs = products.filter((p) => p.price * 129 > 8000);
     }
     renderProducts(filteredInputs);
   });
 });
 
+// TASK - Implement searching through the products - use the search bar to filter the products based on the search query - use the filter method to identify if the searchTerm is in the product title or description then use renderProducts functions.
 
-// TASK - Implement searching through the products - use the search bar to filter the products based on the search query - use the filter method to identify if the searchTerm is in the product title or description then use renderProducts functions. 
+console.log(document.getElementById("sort-by-rating").nextElementSibling);
+
+document.querySelector("form").addEventListener("submit", (e) => {
+  e.preventDefault(); // by default a for submision triggers a http request.
+  let searchString = document.getElementById("search-word").value.toLowerCase().trim();
+  let filteredProducts = [];
+
+  searchString.split(" ").forEach((word) => {
+    const subFilteredProducts = products.filter(p =>{
+      return p.title.toLowerCase().includes(word) || p.description.toLowerCase().includes(word)
+    }        
+    );
+    filteredProducts = [...filteredProducts, ...subFilteredProducts];
+  });
+
+  if (filteredProducts.length > 0) {
+    renderProducts(filteredProducts);
+  } else {
+    document.getElementById("all-products").innerHTML =
+      "<h2 style='color: orangered'>No products found</h2>";
+  }
+});

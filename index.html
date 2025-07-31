@@ -16,7 +16,10 @@
         <a href="#">Services</a>
       </nav>
       <nav>
-        <button>Search</button>
+        <form action="">
+          <input type="text" name="search-word" id="search-word" required />
+          <button type="submit">Search</button>
+        </form>
         <button id="toggle-mode" class="dark">Dark Mode</button>
         <button class="mobile-menu" id="mobile-menu">☰</button>
       </nav>
@@ -25,7 +28,7 @@
       <div class="user-actions">
         <button id="sort-by-rating">Sort By Rating</button>
         <span>Filter By Price</span>
-        <input type="radio" name="range" id="range1"  />
+        <input type="radio" name="range" id="range1" data-user-id="1234" />
         <label for="range1">0 - 2000</label>
         <input type="radio" name="range" id="range2" />
         <label for="range2">2001 - 5000</label>

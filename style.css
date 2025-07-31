@@ -41,6 +41,9 @@ main {
 .mobile-menu {
   display: none;
 }
+form {
+  display: inline;
+}
 
 @media (max-width: 768px) {
   header {
